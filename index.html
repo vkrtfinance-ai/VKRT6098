@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VKRT Finance | Instant Loans & Financial Solutions</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #004aad; /* Trustworthy Blue */
+            --secondary-color: #00c2cb; /* Modern Teal */
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-apply {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-apply:hover {
+            background: #003380;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0, 74, 173, 0.8), rgba(0, 194, 203, 0.8)), url('https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btn {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hero-btn:hover {
+            transform: scale(1.05);
+            background: #00a8b0;
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services {
+            padding: 80px 0;
+            background: var(--light-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .feature-item {
+            flex-basis: 30%;
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            margin: 15px 0;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact {
+            padding: 80px 0;
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            color: var(--dark-color);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #003380;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #222;
+            color: #aaa;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .feature-item {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">VKRT <span>Finance</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Loans</a></li>
+                    <li><a href="#features">Why Us</a></li>
+                    <li><a href="#contact" class="btn-apply">Apply Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Financial Freedom Starts Here</h1>
+            <p>Get instant approval for Personal, Home, and Business loans with the lowest interest rates in the market.</p>
+            <a href="#contact" class="hero-btn">Check Eligibility</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Loan Products</h2>
+                <p>Choose the financial solution that fits your needs</p>
+            </div>
+            <div class="services-grid">
+                <!-- Personal Loan -->
+                <div class="service-card">
+                    <span class="icon">💼</span>
+                    <h3>Personal Loan</h3>
+                    <p>Need funds for travel, medical emergencies, or weddings? Get up to ₹5 Lakhs with zero documentation.</p>
+                </div>
+                <!-- Instant Loan -->
+                <div class="service-card">
+                    <span class="icon">⚡</span>
+                    <h3>Instant Loan</h3>
+                    <p>100% Online process. Get money in your account within 30 minutes of approval. No hidden charges.</p>
+                </div>
+                <!-- Home Loan -->
+                <div class="service-card">
+                    <span class="icon">🏠</span>
+                    <h3>Home Loan</h3>
+                    <p>Build your dream home. We offer low interest rates and long tenure options for new and resale properties.</p>
+                </div>
+                <!-- Business Loan -->
+                <div class="service-card">
+                    <span class="icon">📈</span>
+                    <h3>Business Loan</h3>
+                    <p>Expand your business with capital. Flexible repayment options tailored for startups and established companies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose VKRT Finance?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>🚀 Fast Approval</h3>
+                    <p>We use AI-driven technology to approve your loan in minutes, not days.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>💰 Low Interest Rates</h3>
+                    <p>Competitive rates starting from 10.5% p.a. to keep your EMI affordable.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔒 Secure & Safe</h3>
+                    <p>Your data is encrypted and safe with us. 100% transparent process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2>Get a Call Back</h2>
+                <p>Fill out the form and our loan experts will contact you shortly to discuss your requirements.</p>
+                <br>
+                <p><strong>📞 Helpline:</strong> +91 7775046720</p>
+                <p><strong>📧 Email:</strong> <a href="mailto:vkrtfinance@gmail.com" style="color: #00c2cb;">vkrtfinance@gmail.com</a></p>
+            </div>
+            <div class="contact-form">
+                <form id="callbackForm" onsubmit="sendToWhatsApp(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter mobile number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Loan Type</label>
+                        <select id="loanType">
+                            <option>Personal Loan</option>
+                            <option>Instant Loan</option>
+                            <option>Home Loan</option>
+                            <option>Business Loan</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Loan Amount</label>
+                        <input type="number" id="amount" placeholder="Enter amount required">
+                    </div>
+                    <button type="submit" class="submit-btn">Request Callback</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 VKRT Finance. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // WhatsApp Integration for Form Submission
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const loanType = document.getElementById('loanType').value;
+            const amount = document.getElementById('amount').value;
+            
+            // Your WhatsApp number (with country code)
+            const whatsappNumber = "917775046720";
+            
+            // Create message
+            const message = `*New Loan Request from VKRT Finance Website*%0A%0A` +
+                           `*Name:* ${name}%0A` +
+                           `*Phone:* ${phone}%0A` +
+                           `*Loan Type:* ${loanType}%0A` +
+                           `*Amount:* ₹${amount}`;
+            
+            // Open WhatsApp
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            alert('✅ Your request has been sent to WhatsApp! We will contact you shortly.');
+        }
+    </script>
+</body>
+</html>
