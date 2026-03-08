@@ -32,6 +32,52 @@
             background: var(--bg-primary);
         }
 
+                /* Force mobile site on small screens */
+                @media (max-width: 600px) {
+                    body, html {
+                        font-size: 15px;
+                    }
+                    .container {
+                        max-width: 100vw;
+                        padding: 0 2vw;
+                    }
+                    header, nav, .services, .features, .contact, footer {
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                    .hero h1 {
+                        font-size: 1.1rem;
+                    }
+                    .hero p {
+                        font-size: 0.8rem;
+                    }
+                    .services-grid, .features-grid {
+                        display: block;
+                    }
+                    .service-card, .feature-item {
+                        margin-bottom: 15px;
+                        padding: 1rem;
+                    }
+                    .nav-links {
+                        width: 100vw;
+                        left: 0;
+                        transform: none;
+                    }
+                    .contact-container {
+                        flex-direction: column;
+                    }
+                    .contact-info, .contact-form {
+                        min-width: 100%;
+                    }
+                    .btn-apply, .hero-btn, .submit-btn {
+                        padding: 8px 10px;
+                        font-size: 0.8rem;
+                    }
+                    img[alt="VKRT Finance Logo"] {
+                        height: 40px !important;
+                        max-width: 90vw;
+                    }
+                }
         a {
             text-decoration: none;
             color: inherit;
@@ -406,7 +452,7 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="https://vkrtfinance-ai.github.io/VKRT6098/logo.png" alt="VKRT Finance Logo" style="height:40px;vertical-align:middle;margin-right:8px;object-fit:contain;">
+                    <img src="/logo.png" alt="VKRT Finance Logo" style="height:40px;vertical-align:middle;margin-right:8px;object-fit:contain;">
                     VKRT <span>Finance</span>
                 </div>
                 <button class="nav-toggle" onclick="toggleNav()">☰</button>
@@ -423,7 +469,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container" style="position:relative;">
-            <img src="https://vkrtfinance-ai.github.io/VKRT6098/logo.png" alt="VKRT Finance Logo" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:120vh;opacity:0.12;z-index:0;pointer-events:none;">
+            <img src="/logo.png" alt="VKRT Finance Logo" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:120vh;opacity:0.12;z-index:0;pointer-events:none;">
             <h1>Financial Freedom Starts Here</h1>
             <p>Get instant approval for Personal, Home, and Business loans with the lowest interest rates in the market.</p>
             <a href="#contact" class="hero-btn">Check Eligibility</a>
