@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VKRT Finance | Instant Loans & Financial Solutions</title>
     <style>
-        /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary-color: #004aad; /* Trustworthy Blue */
-            --secondary-color: #00c2cb; /* Modern Teal */
-            --dark-color: #333;
-            --light-color: #f4f4f4;
-            --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #ffffff;
+            --accent-gold: #c5a059;
+            --text-main: #ffffff;
+            --text-dark: #1a1a1a;
+            --gray-subtle: #d1d3d4;
+            --font-family: 'Montserrat', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-family);
         }
 
         html {
@@ -28,7 +28,8 @@
 
         body {
             line-height: 1.6;
-            color: var(--dark-color);
+            color: var(--text-main);
+            background: var(--bg-primary);
         }
 
         a {
@@ -42,12 +43,13 @@
 
         /* --- HEADER & NAVIGATION --- */
         header {
-            background: var(--white);
-            box-shadow: var(--shadow);
+            background: var(--bg-primary);
+            color: var(--text-main);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            border-bottom: 2px solid var(--accent-gold);
         }
 
         .container {
@@ -66,11 +68,11 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--accent-gold);
         }
 
         .logo span {
-            color: var(--secondary-color);
+            color: var(--accent-gold);
         }
 
         .nav-links {
@@ -87,12 +89,12 @@
         }
 
         .nav-links a:hover {
-            color: var(--primary-color);
+            color: var(--accent-gold);
         }
 
         .btn-apply {
-            background: var(--primary-color);
-            color: var(--white);
+            background: var(--accent-gold);
+            color: var(--text-dark);
             padding: 10px 20px;
             border-radius: 5px;
             font-weight: bold;
@@ -100,26 +102,85 @@
         }
 
         .btn-apply:hover {
-            background: #003380;
+            background: #a37f47;
+        }
+
+        /* --- RESPONSIVE NAVBAR --- */
+        .nav-toggle {
+            display: none;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            border: none;
+            font-size: 1.5rem;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        @media (max-width: 768px) {
+            nav {
+                position: relative;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: var(--bg-primary);
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+                flex-direction: column;
+                width: 90vw;
+                max-width: 400px;
+                padding: 1rem 0;
+                z-index: 1001;
+                align-items: center;
+            }
+            .nav-links.show {
+                display: flex;
+            }
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(rgba(0, 74, 173, 0.8), rgba(0, 194, 203, 0.8)), url('https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
+            position: relative;
+            background: linear-gradient(115deg, var(--bg-primary) 80%, var(--bg-secondary) 20%);
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--white);
+            color: var(--text-dark);
             padding-top: 70px;
+            overflow: hidden; /* Prevent logo overflow */
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 20%;
+            height: 100%;
+            pointer-events: none;
+            background: linear-gradient(to left, rgba(0,0,0,0.15) 60%, transparent 100%);
+            z-index: 1;
+        }
+
+        .hero > .container {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--accent-gold);
         }
 
         .hero p {
@@ -128,11 +189,13 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--text-main); /* Make subtitle white */
+            font-weight: 300; /* Make subtitle lighter */
         }
 
         .hero-btn {
-            background: var(--secondary-color);
-            color: var(--white);
+            background: var(--accent-gold);
+            color: var(--text-dark);
             padding: 15px 30px;
             border-radius: 5px;
             font-size: 1.1rem;
@@ -146,13 +209,14 @@
 
         .hero-btn:hover {
             transform: scale(1.05);
-            background: #00a8b0;
+            background: #a37f47;
         }
 
         /* --- SERVICES SECTION --- */
         .services {
             padding: 80px 0;
-            background: var(--light-color);
+            background: var(--bg-secondary);
+            color: var(--text-dark);
         }
 
         .section-title {
@@ -173,11 +237,13 @@
         }
 
         .service-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
+            background: var(--bg-primary);
+            color: var(--text-main);
+            border-left: 5px solid var(--accent-gold);
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
             transition: transform 0.3s;
         }
 
@@ -186,21 +252,22 @@
         }
 
         .icon {
-            font-size: 3rem;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-            display: block;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            display: inline-block;
         }
 
         .service-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary-color);
+            margin-bottom: 10px;
+            color: var(--accent-gold);
         }
 
         /* --- FEATURES SECTION --- */
         .features {
             padding: 80px 0;
-            background: var(--white);
+            background: var(--bg-primary);
+            color: var(--text-main);
         }
 
         .features-grid {
@@ -217,13 +284,14 @@
 
         .feature-item h3 {
             margin: 15px 0;
+            color: var(--accent-gold);
         }
 
         /* --- CONTACT SECTION --- */
         .contact {
             padding: 80px 0;
-            background: var(--primary-color);
-            color: var(--white);
+            background: var(--bg-secondary);
+            color: var(--text-dark);
         }
 
         .contact-container {
@@ -242,10 +310,11 @@
         .contact-form {
             flex: 1;
             min-width: 300px;
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            color: var(--dark-color);
+            background: var(--bg-primary);
+            color: var(--text-main);
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -260,16 +329,16 @@
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-subtle);
             border-radius: 5px;
         }
 
         .submit-btn {
             width: 100%;
-            padding: 12px;
-            background: var(--primary-color);
-            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            background: var(--accent-gold);
+            color: var(--text-dark);
             border: none;
             border-radius: 5px;
             font-size: 1rem;
@@ -277,27 +346,55 @@
         }
 
         .submit-btn:hover {
-            background: #003380;
+            background: #a37f47;
         }
 
         /* --- FOOTER --- */
         footer {
-            background: #222;
-            color: #aaa;
+            background: var(--bg-primary);
+            color: var(--gray-subtle);
             padding: 20px 0;
             text-align: center;
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
             .nav-links {
                 display: none;
             }
             .hero h1 {
                 font-size: 2rem;
             }
-            .feature-item {
-                flex-basis: 100%;
+            .hero p {
+                font-size: 1rem;
+            }
+            .services-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-card, .feature-item {
+                text-align: left;
+            }
+            .container {
+                padding: 0 5px;
+            }
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.2rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .btn-apply, .hero-btn, .submit-btn {
+                padding: 8px 12px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -308,8 +405,12 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">VKRT <span>Finance</span></div>
-                <ul class="nav-links">
+                <div class="logo">
+                    <img src="/logo.png" alt="VKRT Finance Logo" style="height:40px;vertical-align:middle;margin-right:8px;object-fit:contain;">
+                    VKRT <span>Finance</span>
+                </div>
+                <button class="nav-toggle" onclick="toggleNav()">☰</button>
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Loans</a></li>
                     <li><a href="#features">Why Us</a></li>
@@ -321,7 +422,8 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container">
+        <div class="container" style="position:relative;">
+            <img src="/logo.png" alt="VKRT Finance Logo" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:120vh;opacity:0.12;z-index:0;pointer-events:none;">
             <h1>Financial Freedom Starts Here</h1>
             <p>Get instant approval for Personal, Home, and Business loans with the lowest interest rates in the market.</p>
             <a href="#contact" class="hero-btn">Check Eligibility</a>
@@ -394,7 +496,7 @@
                 <h2>Get a Call Back</h2>
                 <p>Fill out the form and our loan experts will contact you shortly to discuss your requirements.</p>
                 <br>
-                <p><strong>📞 Helpline:</strong> +91 7775046720</p>
+                <!-- <p><strong>📞 Helpline:</strong> +91 7775046720</p> -->
                 <p><strong>📧 Email:</strong> <a href="mailto:vkrtfinance@gmail.com" style="color: #00c2cb;">vkrtfinance@gmail.com</a></p>
             </div>
             <div class="contact-form">
@@ -429,7 +531,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 VKRT Finance. All Rights Reserved.</p>
+            <p>&copy; 2026 VKRT Finance. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -455,7 +557,7 @@
             const amount = document.getElementById('amount').value;
             
             // Your WhatsApp number (with country code)
-            const whatsappNumber = "917775046720";
+            const whatsappNumber = "919420904974";
             
             // Create message
             const message = `*New Loan Request from VKRT Finance Website*%0A%0A` +
@@ -470,6 +572,12 @@
             
             // Show success message
             alert('✅ Your request has been sent to WhatsApp! We will contact you shortly.');
+        }
+
+        // Toggle nav links
+        function toggleNav() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('show');
         }
     </script>
 </body>
